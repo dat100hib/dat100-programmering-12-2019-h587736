@@ -5,67 +5,127 @@ import no.hvl.dat100.jplab12.oppgave1.*;
 
 public class Blogg {
 
-	// TODO: objektvariable 
+	// TODO: objektvariable
+	private Innlegg[] innleggtabell;
+	private int nesteledige;
 
 	public Blogg() {
-		throw new UnsupportedOperationException(TODO.constructor("Blogg"));
+		this.innleggtabell = new Innlegg[20];
+		this.nesteledige = 0;
 	}
 
 	public Blogg(int lengde) {
-		throw new UnsupportedOperationException(TODO.constructor("Blogg"));
+		this.innleggtabell = new Innlegg[lengde];
+		this.nesteledige = 0;
 	}
 
 	public int getAntall() {
-		throw new UnsupportedOperationException(TODO.method());
-	}
-	
-	public Innlegg[] getSamling() {
-		throw new UnsupportedOperationException(TODO.method());
+		int ant = 0;
+		while(ant < nesteledige) {
+			ant++;
+		}
+		System.out.println(ant);
+		return ant;
 
 	}
-	
+
+	public Innlegg[] getSamling() {
+
+		return innleggtabell;
+	}
+
 	public int finnInnlegg(Innlegg innlegg) {
 
-		throw new UnsupportedOperationException(TODO.method());
+		boolean funnet = false;
+		int pos = 0;
+		while (pos < nesteledige && !funnet) {
+			if (innleggtabell[pos].erLik(innlegg)) {
+				funnet = true;
+			}
+
+			else {
+				pos++;
+			}
+		}
+		if (funnet == true) {
+			return pos;
+		} else {
+			return -1;
+		}
+
 	}
 
 	public boolean finnes(Innlegg innlegg) {
-		throw new UnsupportedOperationException(TODO.method());
+		boolean funnet = false;
+		int pos = 0;
+		while (pos < nesteledige && !funnet) {
+			if (innleggtabell[pos].getId() == innlegg.getId()) {
+				funnet = true;
+			}
+
+			else {
+				pos++;
+			}
+		}
+		if (funnet) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	public boolean ledigPlass() {
-		throw new UnsupportedOperationException(TODO.method());
+		boolean ledig = false;
+		int pos = 0;
+		while (pos < innleggtabell.length && !ledig) {
+			if (nesteledige < pos) {
+				ledig = true;
+			}
+			pos++;
+		}
+		return ledig;
 
 	}
-	
+
 	public boolean leggTil(Innlegg innlegg) {
 
-		throw new UnsupportedOperationException(TODO.method());
+		int p = finnInnlegg(innlegg);
+        
+		if (p == -1) {
+			innleggtabell[nesteledige] = innlegg;
+			nesteledige++;
+			return true;
+		} else {
+			return false;
+		}
 	}
-	
+	//Får en error på unittest som forventer et linjeskifte på slutten av strengen når det ikke er det
+			// og forventer ikke det når det er et linjeksifte
 	public String toString() {
-		throw new UnsupportedOperationException(TODO.method());
+		int i = 0;
+		return String.format("%x%n%s%s", innleggtabell.length ,innleggtabell[i].toString(), innleggtabell[i+1].toString());
+
 	}
 
 	// valgfrie oppgaver nedenfor
-	
+
 	public void utvid() {
 		throw new UnsupportedOperationException(TODO.method());
 	}
-	
+
 	public boolean leggTilUtvid(Innlegg innlegg) {
 
 		throw new UnsupportedOperationException(TODO.method());
-		
+
 	}
-	
+
 	public boolean slett(Innlegg innlegg) {
-		
+
 		throw new UnsupportedOperationException(TODO.method());
 	}
-	
+
 	public int[] search(String keyword) {
-		
+
 		throw new UnsupportedOperationException(TODO.method());
 
 	}

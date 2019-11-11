@@ -5,27 +5,33 @@ import no.hvl.dat100.jplab12.common.TODO;
 public class Bilde extends Tekst {
 
 	// TODO - objekt variable
+	protected String url;
 	
 	public Bilde(int id, String bruker, String dato, String tekst, String url) {
-		throw new UnsupportedOperationException(TODO.constructor("Bilde"));
+		super(id,bruker,dato,tekst);
+		this.url = url;
 	}
 
 	public Bilde(int id, String bruker, String dato, int likes, String tekst, String url) {
-		throw new UnsupportedOperationException(TODO.constructor("Bilde"));
+		super(id,bruker,dato,likes,tekst);
+		this.url = url;
 	}
 	
 	public String getUrl() {
-		throw new UnsupportedOperationException(TODO.method());
+		return url;
 
 	}
 
 	public void setUrl(String url) {
-		throw new UnsupportedOperationException(TODO.method());
+		this.url=url;
 	}
 
+	//Får en error på unittest som forventer et linjeskifte på slutten av strengen når det ikke er det
+		// og forventer ikke det når det er et linjeksifte
 	@Override
 	public String toString() {
-		throw new UnsupportedOperationException(TODO.method ());
+		return String.format("BILDE%n%x%n%s%n%s%n%x%n%s%n%s%n", super.getId(), super.getBruker(), super.getDato(),
+				super.getLikes(), super.getTekst(), url);
 
 	}
 

@@ -5,39 +5,46 @@ import no.hvl.dat100.jplab12.common.TODO;
 
 public class Tekst extends Innlegg {
 
-	// TODO: objektvariable 
-	
-	public Tekst () {
-		
+	// TODO: objektvariable
+	protected String tekst;
+
+	public Tekst() {
+
 	}
-	
+
 	public Tekst(int id, String bruker, String dato, String tekst) {
-		throw new UnsupportedOperationException(TODO.constructor("Tekst"));
+		super(id, bruker, dato);
+		this.tekst = tekst;
 	}
-	
+
 	public Tekst(int id, String bruker, String dato, int likes, String tekst) {
-		throw new UnsupportedOperationException(TODO.constructor("Tekst"));
+		super(id, bruker, dato, likes);
+		this.tekst = tekst;
 	}
-	
+
 	public String getTekst() {
-		throw new UnsupportedOperationException(TODO.method());
+		return tekst;
 
 	}
 
 	public void setTekst(String tekst) {
-		throw new UnsupportedOperationException(TODO.method());
+		this.tekst = tekst;
 	}
 
+	
+	//Får en error på unittest som forventer et linjeskifte på slutten av strengen når det ikke er det
+	// og forventer ikke det når det er et linjeksifte
 	@Override
 	public String toString() {
-		throw new UnsupportedOperationException(TODO.method());
+		return String.format("TEKST%n%x%n%s%n%s%n%x%n%s%n", super.getId(), super.getBruker(), super.getDato(),
+				super.getLikes(), tekst);
 
 	}
-	
+
 	// Metoden nedenfor er kun for valgfri oppgave 6
 	public String toHTML() {
-			
+
 		throw new UnsupportedOperationException(TODO.method());
-				
+
 	}
 }
